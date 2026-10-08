@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cubelander.github.io/sitemap.xml

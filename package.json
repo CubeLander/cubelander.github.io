@@ -1,0 +1,17 @@
+{
+  "name": "cubelander.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && python3 -m http.server 8080 --bind 127.0.0.1 --directory _site",
+    "build": "eleventy",
+    "test": "npm run build && python3 scripts/check-site.py"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  }
+}

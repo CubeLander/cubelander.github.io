@@ -1,0 +1,7 @@
+{
+  "name": "CubeLander · 技术札记",
+  "url": "https://cubelander.github.io",
+  "description": "关于推理系统、执行边界与性能证据的中文技术札记。从 BetterScale 开始，记录问题、机制和有边界的结论。",
+  "repo": "https://github.com/CubeLander/cubelander.github.io",
+  "source": "https://github.com/vLLM-HUST/BetterScale"
+}

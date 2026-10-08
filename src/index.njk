@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+<div class="wrap">
+  <section class="hero" aria-labelledby="intro-title">
+    <div class="hero-copy"><div class="eyebrow"><span class="signal"></span> 系统 · 性能 · 工程实践</div><h1 id="intro-title">在执行的细节里，<br>寻找<span class="accent">更好的答案。</span></h1><p>从推理系统出发，记录那些值得拆开的技术问题。<br class="desktop-break">解释机制，留下证据，也诚实地标出结论的边界。</p><a class="text-link" href="#notes">阅读技术札记 <span>↓</span></a></div>
+    <div class="execution-note" aria-label="执行路径示意：准备、提交、设备执行。优化从理解等待与依赖开始。"><div class="diagram-top"><span>FIELD NOTE / 001</span><span class="diagram-dot"></span></div><div class="diagram-title">少一点等待。<br>多一点执行。</div><div class="timeline"><div class="lane"><span>HOST</span><div class="track"><i class="prepare">准备</i><i class="submit">提交</i><i class="wait">等待</i></div></div><div class="lane"><span>DEVICE</span><div class="track device"><i>执行</i><i>执行</i><i>执行</i></div></div></div><p>从等待与依赖，重新理解执行路径。</p><div class="diagram-bottom"><span>BETTERSCALE</span><span>机制示意 · 非测量数据</span></div></div>
+  </section>
+  <section class="notes-section" id="notes" aria-labelledby="notes-title">
+    <div class="section-heading"><h2 id="notes-title">技术札记 <span>/ NOTES</span></h2><span class="count">{{ collections.articles | length }} 篇文章</span></div>
+    <div class="notes-layout"><aside class="series-intro"><div class="eyebrow">当前专题 / 01</div><h3>BetterScale</h3><p>保留成熟引擎。<br>理解执行契约。<br>验证每一次改进。</p><a href="/topics/#betterscale">专题索引 →</a><div class="topic-pills"><span>推理系统</span><span>性能工程</span><span>Ascend</span></div></aside>
+    <div class="article-list">{% for post in collections.articles %}<article class="note-row"><div class="note-index">0{{ loop.index }}</div><div><div class="note-meta"><span>{{ post.data.category }}</span><time datetime="{{ post.date | iso }}">{{ post.date | iso }}</time></div><h3><a href="{{ post.url }}">{{ post.data.title }} <span aria-hidden="true">↗</span></a></h3><p>{{ post.data.description }}</p><div class="note-tags">{% for topic in post.data.topics %}<span>{{ topic }}</span>{% endfor %}</div></div></article>{% endfor %}</div></div>
+  </section>
+  <section class="editorial-note"><span class="eyebrow">关于这些记录</span><p>性能数字不是脱离上下文的答案。<br>这里的每一项结果，都应当能找到它的条件、对照和来源。</p><a href="{{ site.source }}">BetterScale 项目仓库 ↗</a></section>
+</div>

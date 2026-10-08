@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} — {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{% if series %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/feed.xml">
+  {% if series %}<link rel="alternate" type="text/markdown" href="/text/{{ page.fileSlug }}.md" title="Markdown 正文">{% endif %}
+  {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="site-header wrap">
+    <a class="brand" href="/" aria-label="CubeLander 技术札记首页"><span class="brand-mark" aria-hidden="true">C<span>·</span></span><span>CubeLander<span class="brand-sub">技术札记 / ENGINEERING NOTES</span></span></a>
+    <nav aria-label="主导航"><a href="/#notes" {% if page.url == '/' %}aria-current="page"{% endif %}>文章</a><a href="/topics/" {% if page.url == '/topics/' %}aria-current="page"{% endif %}>主题</a><a href="/feed.xml">订阅 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">{{ content | safe }}</main>
+  <footer class="site-footer wrap"><span>CubeLander <span class="muted">/</span> 技术札记</span><span>记录机制，也记录边界。</span><a href="{{ site.repo }}">网站源码 ↗</a></footer>
+</body>
+</html>

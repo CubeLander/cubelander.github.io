@@ -1,0 +1,7 @@
+---
+layout: base.njk
+title: 主题索引
+description: 从项目全貌到执行机制、性能证据和容量边界，按问题阅读 BetterScale 技术札记。
+permalink: /topics/
+---
+<div class="wrap topic-page"><div class="eyebrow">EXPLORE / 按问题阅读</div><h1>一条线索，<br>把问题读深一点。</h1><section id="betterscale"><div class="section-heading"><h2>BetterScale <span>/ 01</span></h2><a href="{{ site.source }}">项目源码 ↗</a></div><p class="topic-lead">围绕 vLLM Ascend 的增量优化：先认识系统，再理解机制，最后回到服务证据与容量约束。</p><ol class="topic-list">{% for post in collections.articles %}<li><span>{{ post.data.category }}</span><h3><a href="{{ post.url }}">{{ post.data.title }} →</a></h3><p>{{ post.data.scope }}</p></li>{% endfor %}</ol></section></div>

@@ -1,0 +1,21 @@
+---
+layout: base.njk
+---
+<div class="wrap article-shell">
+  <header class="article-header">
+    <a class="back" href="/#notes">← 全部文章</a>
+    <div class="eyebrow">{{ series }} / {{ category }}</div>
+    <h1>{{ title }}</h1>
+    <p class="dek">{{ description }}</p>
+    <div class="article-meta"><time datetime="{{ page.date | iso }}">{{ page.date | iso }}</time><span>约 {{ content | readTime }} 分钟</span><a href="/text/{{ page.fileSlug }}.md">Markdown ↗</a></div>
+  </header>
+  <div class="article-grid">
+    <aside class="article-aside"><span class="eyebrow">阅读坐标</span><p>{{ scope }}</p><a href="/topics/#betterscale">BetterScale 专题 →</a><p class="aside-note">本文整理自项目已有记录，不代表重新运行了实验。原始实验日期与版本以文中证据为准。</p></aside>
+    <article class="prose">{{ content | safe }}
+      <section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">来源与版本</h2><p>基于 BetterScale 的公开源码快照 <code>{{ snapshot | truncate(12, true, '') }}</code> 整理。保留原始对照条件，不将历史实验视为当前版本的新验收。</p><ul>{% for source in sources %}<li><a href="{{ site.source }}/blob/{{ snapshot }}/{{ source.path }}">{{ source.label }} ↗</a></li>{% endfor %}</ul></section>
+      <div class="article-end"><span>— END —</span><a href="/topics/#betterscale">继续阅读 BetterScale 系列 →</a></div>
+    </article>
+  </div>
+</div>
+{% set schema = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": title, "description": description, "inLanguage": "zh-CN", "datePublished": page.date | iso, "mainEntityOfPage": site.url + page.url} %}
+<script type="application/ld+json">{{ schema | json | safe }}</script>
