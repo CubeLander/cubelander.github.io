@@ -3,7 +3,8 @@ permalink: /feed.xml
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
+{% set entries = collections.articles | newestFirst %}
 <feed xmlns="http://www.w3.org/2005/Atom">
-<title>{{ site.name }}</title><id>{{ site.url }}/</id><link href="{{ site.url }}/feed.xml" rel="self"/><link href="{{ site.url }}/"/><subtitle>{{ site.description }}</subtitle><updated>{{ collections.articles[0].date.toISOString() }}</updated><author><name>CubeLander</name></author>
-{% for post in collections.articles %}<entry><title>{{ post.data.title }}</title><id>{{ site.url }}{{ post.url }}</id><link href="{{ site.url }}{{ post.url }}"/><updated>{{ post.date.toISOString() }}</updated><summary>{{ post.data.description }}</summary></entry>{% endfor %}
+<title>{{ site.name }}</title><id>{{ site.url }}/</id><link href="{{ site.url }}/feed.xml" rel="self"/><link href="{{ site.url }}/"/><subtitle>{{ site.description }}</subtitle><updated>{{ entries[0].date.toISOString() }}</updated><author><name>CubeLander</name></author>
+{% for post in entries %}<entry><title>{{ post.data.title }}</title><id>{{ site.url }}{{ post.url }}</id><link href="{{ site.url }}{{ post.url }}"/><updated>{{ post.date.toISOString() }}</updated><summary>{{ post.data.description }}</summary></entry>{% endfor %}
 </feed>

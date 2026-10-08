@@ -4,6 +4,7 @@ export default function (config) {
   let articles = [];
   config.addPassthroughCopy('src/assets');
   config.addPassthroughCopy('src/robots.txt');
+  config.addFilter('newestFirst', posts => [...posts].sort((a, b) => b.date - a.date));
   config.addFilter('iso', date => new Date(date).toISOString().slice(0, 10));
   config.addFilter('readTime', text => Math.max(1, Math.ceil(text.replace(/<[^>]*>/g, '').length / 450)));
   config.addFilter('json', value => JSON.stringify(value).replace(/</g, '\\u003c'));
