@@ -54,6 +54,13 @@ for path, page in pages.items():
         if url.fragment and target in pages:
             assert unquote(url.fragment) in pages[target].ids, f'Broken anchor: {path}: {link}'
 
+taxi = ROOT / 'taxi/index.html'
+assert taxi.read_bytes() == Path('public/taxi/index.html').read_bytes(), 'Taxi export must pass through unchanged'
+assert '/taxi/' in (ROOT / 'index.html').read_text(), 'Missing taxi navigation'
+public = taxi.read_text()
+assert '公开展示版' in public
+assert not any(token in public.lower() for token in ('/users/', 'file://', 'mailto:', '学号', '班级')), 'Private material in taxi export'
+
 sources = list(Path('src/posts').glob('*.md'))
 assert sources, 'No articles'
 for source in sources:

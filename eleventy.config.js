@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 export default function (config) {
   let articles = [];
   config.addPassthroughCopy('src/assets');
+  config.addPassthroughCopy({ 'public/taxi': 'taxi' });
   config.addPassthroughCopy('src/robots.txt');
   config.addFilter('newestFirst', posts => [...posts].sort((a, b) => b.date - a.date));
   config.addFilter('iso', date => new Date(date).toISOString().slice(0, 10));
